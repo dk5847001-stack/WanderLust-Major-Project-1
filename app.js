@@ -55,7 +55,6 @@ app.get("/listings/:id", async (req, res)=>{
     res.render("listings/show.ejs", {listing});
 });
 
-
 // app.get("/testListing", async (req, res)=>{
 //     const listing = new Listing({
 //         title: "Test Listing",
