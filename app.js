@@ -28,7 +28,7 @@ async function main() {
 }
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello everyone World!');
 });
 
 // index route to show all listings
