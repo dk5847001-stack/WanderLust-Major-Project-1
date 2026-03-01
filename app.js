@@ -4,13 +4,14 @@ const port = 3000;
 const mongoose = require('mongoose');
 const Listing = require('./models/listing');
 const path = require('path');
+const methodOverride = require('method-override');
 
+app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
-
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 main()
@@ -46,6 +47,27 @@ app.post("/listings", async (req, res)=>{
 const newListing = new Listing(req.body.listing);
 await newListing.save();
 res.redirect("/listings");
+});
+
+// edit route to show form to edit listing
+app.get("/listings/:id/edit", async (req, res)=>{
+    const {id} = req.params;
+    const listing = await Listing.findById(id);
+    res.render("listings/edit.ejs", {listing});
+});
+
+// update route to update listing in DB
+app.put("/listings/:id", async (req, res)=>{
+    const {id} = req.params;
+    await Listing.findByIdAndUpdate(id, req.body.listing);
+    res.redirect(`/listings/${id}`);
+});
+
+// delete route to delete listing from DB
+app.delete("/listings/:id", async (req, res)=>{
+    const {id} = req.params;
+    await Listing.findByIdAndDelete(id);
+    res.redirect("/listings");
 });
 
 // Sample route to test if listing can be created and saved to DB
