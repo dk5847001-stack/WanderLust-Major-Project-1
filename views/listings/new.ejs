@@ -1,13 +1,42 @@
 <% layout('layouts/boilerplate') %>
 <body>
-    <h3>Create a new listings</h3>
+<div class="glass-card">
+    <h3>Create a New Listing</h3>
+
     <form method="post" action="/listings">
-        <input type="text" name="listing[title]" placeholder="Title" required><br>
-        <textarea name="listing[description]" placeholder="Description" required></textarea><br>
-        <input type="text" name="image[url]" placeholder="Enter image URL"> <br>
-         <input type="number" name="listing[price]" placeholder="Price" required><br>
-        <input type="text" name="listing[location]" placeholder="Location" required><br>
-        <input type="text" name="listing[country]" placeholder="Country" required><br>
-        <button>Create Listing</button>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="listing[title]" placeholder="Title" required>
+            <label>Title</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <textarea class="form-control" name="listing[description]" placeholder="Description" style="height:100px" required></textarea>
+            <label>Description</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="image[url]" placeholder="Image URL">
+            <label>Image URL</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" name="listing[price]" placeholder="Price" required>
+            <label>Price</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="listing[location]" placeholder="Location" required>
+            <label>Location</label>
+        </div>
+
+        <div class="form-floating mb-4">
+            <input type="text" class="form-control" name="listing[country]" placeholder="Country" required>
+            <label>Country</label>
+        </div>
+
+        <button class="btn btn-modern w-100">Create Listing</button>
+
     </form>
+</div>
 </body>

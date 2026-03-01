@@ -1,0 +1,124 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f2027;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 25px;
+    padding: 45px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+    transition: all 0.4s ease;
+    animation: fadeSlide 1s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 35px 65px rgba(0,0,0,0.5);
+}
+
+@keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.glass-card h3 {
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 35px;
+    color: #fff;
+}
+
+/* =========================
+   FORM ELEMENTS
+========================= */
+.form-control {
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.form-control:focus {
+    background: rgba(255,255,255,0.25);
+    border-color: #00f2fe;
+    box-shadow: 0 0 20px rgba(0,242,254,0.6);
+    transform: scale(1.02);
+}
+
+.form-floating > label {
+    color: rgba(255,255,255,0.8);
+}
+
+/* =========================
+   BUTTON STYLE
+========================= */
+.btn-modern {
+    background: linear-gradient(135deg, #00f2fe, #4facfe);
+    border: none;
+    border-radius: 30px;
+    padding: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #000;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.btn-modern:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0,242,254,0.5);
+}
+
+/* Ripple Effect */
+.btn-modern::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn-modern:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* =========================
+   RESPONSIVE TWEAKS
+========================= */
+@media (max-width: 576px) {
+    .glass-card {
+        padding: 30px;
+    }
+}
