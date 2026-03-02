@@ -126,3 +126,7 @@ margin: auto;
         padding: 30px;
     }
 }
+/* scrollbar hidden */
+::-webkit-scrollbar {
+    display: none;
+}
